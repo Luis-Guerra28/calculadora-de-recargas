@@ -2,23 +2,32 @@ import math
 def calcularRecarga(monto, listaMontos):
     #Asegurmaos que los montos esten ordenados
     listaMontos.sort()
-    sizeCombination = math.ceil(monto / listaMontos[0]) 
-    print(sizeCombination)
-    com = combinaciones(listaMontos, sizeCombination)
+
+    com = combinaciones(listaMontos, monto)
     print(com)
     return
 
 
-def combinaciones(elements, sizeCombination, currentCombination=[], currentPosition=0, result=[]): 
+def combinaciones(elements, target, currentCombination=[], currentPosition=0, valueMin=0, valueMax=1000000):
+    total = sum(currentCombination)
+
+    if total > valueMax:
+        return [valueMin, valueMax]
     
-    if len(currentCombination) == sizeCombination:
-        result.append(currentCombination)
-        return
+    if (total >= target) and (total < valueMax):
+        valueMax = total
+    
+    if (total <= target) and (total > valueMin):
+        valueMin = total
 
-    for i in range(currentPosition, len(elements)): 
-        combinaciones(elements, sizeCombination, currentCombination + [elements[i]], i)
+    for i in range(currentPosition, len(elements)):
 
-    return result
+        result = combinaciones(elements, target, currentCombination + [elements[i]], i, valueMin, valueMax)
+        
+        valueMin = result[0]
+        valueMax = result[1]
+        
+    return [valueMin, valueMax]
 
 
 
