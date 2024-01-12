@@ -1,20 +1,11 @@
-def calcularRecarga(monto, listaMontos):
-    #Asegurmaos que los montos esten ordenados
-    listaMontos.sort()
-
-    com = combinaciones(listaMontos, monto)
-    print(com)
-    return
-
-
-def combinaciones(elements, target, currentCombination=[], currentPosition=0, valueMin=0, valueMax=1000000, arrayMin=[], arrayMax=[]):
+def combinaciones(target, elements, currentCombination=[], currentPosition=0, valueMin=0, valueMax=1000000, arrayMin=[], arrayMax=[]):
+    elements.sort()
     total = sum(currentCombination)
 
     if total > valueMax:
         return [valueMin, valueMax, arrayMin, arrayMax]
     
     if (total >= target) and (total <= valueMax):
-        
         valueMax = total
         arrayMax = currentCombination
     
@@ -25,8 +16,8 @@ def combinaciones(elements, target, currentCombination=[], currentPosition=0, va
     for i in range(currentPosition, len(elements)):
 
         result = combinaciones(
-            elements,
             target,
+            elements,
             currentCombination + [elements[i]],
             i,
             valueMin,
@@ -41,8 +32,3 @@ def combinaciones(elements, target, currentCombination=[], currentPosition=0, va
         arrayMax = result[3]
 
     return [valueMin, valueMax, arrayMin, arrayMax]
-
-
-
-
-print(calcularRecarga(100, [50, 75, 100, 125, 150]))
