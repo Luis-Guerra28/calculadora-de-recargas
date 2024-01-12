@@ -1,4 +1,4 @@
-def combinaciones(target, elements, currentCombination=[], currentPosition=0, valueMin=0, valueMax=1000000, arrayMin=[], arrayMax=[]):
+def calcularSuma(target, elements, currentCombination=[], currentPosition=0, valueMin=0, valueMax=1000000, arrayMin=[], arrayMax=[]):
     elements.sort()
     total = sum(currentCombination)
 
@@ -15,7 +15,7 @@ def combinaciones(target, elements, currentCombination=[], currentPosition=0, va
 
     for i in range(currentPosition, len(elements)):
 
-        result = combinaciones(
+        result = calcularSuma(
             target,
             elements,
             currentCombination + [elements[i]],
