@@ -1,5 +1,5 @@
 import unittest
-from app.modules.calcularSuma import calcularSuma 
+from app.utils.calcularSuma import calcularSuma 
 
 class TestCalculadora(unittest.TestCase):
 
