@@ -9,7 +9,7 @@ def main(page: ft.Page):
         
         value = int(textField_input.value)
         company = company_selection.value
-        listValues = DIGITEL_LIST if company == 1 else MOVISTAR_LIST
+        listValues = DIGITEL_LIST if company == "1" else MOVISTAR_LIST
         isMax = checkBox_valueMax.value
 
         if isMax: 
