@@ -18,25 +18,48 @@ def main(page: ft.Page):
             
             valueMin = result[0]
             totalMin = porcentage + valueMin
-            combination_min = result[2]
+            combinationMin = result[2]
             
             valueMax = result[1]
             totalMax = porcentage + valueMax
-            combination_max = result[3]
+            combinationMax = result[3]
+
+            max_recharge.controls[1].value = valueMax
+            max_porcentage.controls[1].value = porcentage
+            max_total_recharge.controls[1].value = totalMax
+            text_combinationMax.value = combinationMax
+            
+            min_recharge.controls[1].value = valueMin
+            min_porcentage.controls[1].value = porcentage
+            min_total_recharge.controls[1].value = totalMin
+            text_combinationMin.value = combinationMin
+            
+
+
         else:
             result = calcularSuma(value, listValues)
             
             valueMin = result[0]
             porcentageMin = valueMin * 0.2
             totalMin = porcentageMin + valueMin
-            combination_min = result[2]
+            combinationMin = result[2]
 
             valueMax = result[1]
             porcentageMax = valueMax * 0.2
             totalMax = porcentageMax + valueMax
-            combination_max = result[3]
+            combinationMax = result[3]
 
-        #page.update()
+            max_recharge.controls[1].value = valueMax
+            max_porcentage.controls[1].value = porcentageMax
+            max_total_recharge.controls[1].value = totalMax
+            text_combinationMax.value = combinationMax
+            
+            min_recharge.controls[1].value = valueMin
+            min_porcentage.controls[1].value = porcentageMin
+            min_total_recharge.controls[1].value = totalMin
+            text_combinationMin.value = combinationMin
+
+        page.update()
 
     textField_input = ft.TextField(expand=1)
     button_calculate = ft.IconButton(
@@ -88,14 +111,14 @@ def main(page: ft.Page):
         alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
     )
 
-    combination_max = ft.Text()
+    text_combinationMax = ft.Text()
 
     container_max = ft.Column(
         [
             max_recharge,
             max_porcentage,
             max_total_recharge,
-            combination_max,
+            text_combinationMax,
         ]
     )
 
@@ -126,7 +149,7 @@ def main(page: ft.Page):
         alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
     )
 
-    min_combination = ft.Text()
+    text_combinationMin = ft.Text()
     
     container_min = ft.Column(
     
@@ -135,7 +158,7 @@ def main(page: ft.Page):
             min_recharge,
             min_porcentage,
             min_total_recharge,
-            min_combination,
+            text_combinationMin,
         ]
     )
 
